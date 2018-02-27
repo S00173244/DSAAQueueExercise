@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DSAAQueueExercise
 {
@@ -11,7 +13,7 @@ namespace DSAAQueueExercise
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        Queue<Texture2D> imageQueue = new Queue<Texture2D>(); 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -39,7 +41,9 @@ namespace DSAAQueueExercise
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            imageQueue.Enqueue(Content.Load<Texture2D>("images/two"));
+            imageQueue.Enqueue(Content.Load<Texture2D>("images/three"));
+            imageQueue.Enqueue(Content.Load<Texture2D>("images/five"));
             // TODO: use this.Content to load your game content here
         }
 
@@ -74,6 +78,7 @@ namespace DSAAQueueExercise
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
 
             // TODO: Add your drawing code here
 
